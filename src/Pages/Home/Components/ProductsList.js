@@ -18,7 +18,11 @@ export default function ProductsList(props) {
           {
             products.map((product) => (
               <Grid item xs={12} md={3}>
-                <Card sx={{ backgroundColor: 'background.paper', boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.135216)' }}>
+                <Card
+                  sx={{
+                    backgroundColor: 'background.paper', boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.135216)', minHeight: '310px', position: 'relative',
+                  }}
+                >
                   <Grid container>
                     <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
                       {
@@ -114,6 +118,9 @@ export default function ProductsList(props) {
                           sx={{
                             backgroundColor: loading ? '#eee' : '#0F52BA',
                             cursor: loading ? 'auto' : 'pointer',
+                            position: 'absolute',
+                            bottom: 0,
+                            width: '100%',
                           }}
                         >
                           <Grid container sx={{ display: 'flex', alignItems: 'center', py: 1 }}>
