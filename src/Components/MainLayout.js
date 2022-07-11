@@ -6,7 +6,7 @@ import Footer from './Footer';
 
 const MainLayoutRoot = experimentalStyled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
-  height: '100vh',
+  minHeight: '100vh',
   maxWidth: '100vw',
 }));
 

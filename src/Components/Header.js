@@ -2,16 +2,18 @@ import React from 'react';
 import {
   Container, Grid, Typography, AppBar,
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import Checkout from './Checkout';
 
 export default function Header() {
+  const theme = useTheme();
   return (
     <Grid item xs={12}>
       <AppBar
         elevation={2}
         position="static"
         sx={{
-          backgroundColor: '#0F52BA', p: 3,
+          backgroundColor: '#0F52BA',
         }}
       >
         <Container maxWidth="xl">
@@ -23,6 +25,9 @@ export default function Header() {
                   fontWeight: 600,
                   fontSize: '40px',
                   lineHeight: '19px',
+                  [theme.breakpoints.down('md')]: {
+                    fontSize: '32px',
+                  },
                 }}
               >
                 MKS
@@ -34,6 +39,9 @@ export default function Header() {
                   fontSize: '20px',
                   lineHeight: '19px',
                   pl: 1,
+                  [theme.breakpoints.down('md')]: {
+                    fontSize: '16px',
+                  },
                 }}
               >
                 Sistemas

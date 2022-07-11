@@ -12,9 +12,9 @@ export default function Background() {
 
     try {
       api.get(url)
-        .then((res) => { setProducts(res.data.products); setTimeout(() => { setLoading(false); }, 1500); });
+        .then((res) => { setProducts(res.data.products); setLoading(false); });
     } catch (err) {
-      alert(err);
+      console.error(err);
     }
   }, []);
 
@@ -23,7 +23,7 @@ export default function Background() {
       <Box
         sx={{
           backgroundColor: '#f9f9f9',
-          height: '85vh',
+          minHeight: '90vh',
           display: 'flex',
           alignItems: 'center',
         }}

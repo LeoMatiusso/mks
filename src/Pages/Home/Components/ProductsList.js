@@ -2,29 +2,70 @@ import React from 'react';
 import {
   Grid, Container, Card, Typography, Box, Skeleton,
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import { useTheme } from '@mui/material/styles';
 
 const Image = styled.img`
-  height: 138px;
+  height: 100%;
 `;
 
 export default function ProductsList(props) {
   const { products, loading } = props;
+  const theme = useTheme();
+
+  const dispatch = useDispatch();
+
+  const handleAddCart = (product) => {
+    dispatch({
+      type: 'ADD_PRODUCT',
+      payload: {
+        product,
+        qtd: 1,
+      },
+    });
+  };
+
   return (
-    <Grid item xs={12}>
+    <Grid
+      item
+      xs={12}
+      sx={{
+        [theme.breakpoints.down('md')]: {
+          pt: 5,
+          pb: 8,
+        },
+      }}
+    >
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           {
             products.map((product) => (
-              <Grid item xs={12} md={3}>
+              <Grid item xs={12} sm={6} lg={3} md={4}>
                 <Card
                   sx={{
-                    backgroundColor: 'background.paper', boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.135216)', minHeight: '310px', position: 'relative',
+                    backgroundColor: 'background.paper',
+                    boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.135216)',
+                    minHeight: '300px',
+                    position: 'relative',
+                    height: '100%',
+                    borderRadius: '8px',
                   }}
                 >
                   <Grid container>
-                    <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Grid
+                      item
+                      xs={12}
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        height: '138px',
+                        [theme.breakpoints.down('md')]: {
+                          height: '158px',
+                        },
+                      }}
+                    >
                       {
                         loading
                           ? <Skeleton animation="wave" variant="rectangular" width="100%" height="138px" />
@@ -49,6 +90,9 @@ export default function ProductsList(props) {
                                     fontWeight: 400,
                                     fontSize: '13px',
                                     lineHeight: '19px',
+                                    [theme.breakpoints.down('md')]: {
+                                      fontSize: '16px',
+                                    },
                                   }}
                                 >
                                   {product.name}
@@ -73,6 +117,9 @@ export default function ProductsList(props) {
                                       fontSize: '14px',
                                       lineHeight: '15px',
                                       color: '#fff',
+                                      [theme.breakpoints.down('md')]: {
+                                        fontSize: '14px',
+                                      },
                                     }}
                                   >
                                     R$
@@ -106,6 +153,9 @@ export default function ProductsList(props) {
                                   lineHeight: '12px',
                                   px: 2,
                                   pb: 2,
+                                  [theme.breakpoints.down('md')]: {
+                                    pb: 7,
+                                  },
                                 }}
                               >
                                 {product.description}
@@ -115,6 +165,7 @@ export default function ProductsList(props) {
                       </Grid>
                       <Grid item xs={12}>
                         <Box
+                          onClick={() => handleAddCart(product)}
                           sx={{
                             backgroundColor: loading ? '#eee' : '#0F52BA',
                             cursor: loading ? 'auto' : 'pointer',
