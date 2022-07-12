@@ -1,8 +1,23 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { render } from '@testing-library/react';
+import { store } from './store'
+import * as redux from 'react-redux'
+
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+import { Provider } from 'react-redux';
+
+describe('Try open app', () => {
+    const { container } = render(<App />)
+
+    it('OpenApp', () => {
+        const { getByText } = render(
+            <Provider store={store}>
+                <App />
+            </Provider>
+        );
+
+        expect(container.firstChild).not.toBeNull();
+    });
 });

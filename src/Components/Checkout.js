@@ -139,6 +139,7 @@ export default function Checkout() {
                 <Grid item xs={12}>
                   <Grid container sx={{ display: 'flex', alignItems: 'center', pb: 3 }}>
                     <Grid
+                      item
                       xs={9}
                       md={6}
                     >
