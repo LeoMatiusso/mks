@@ -4,8 +4,8 @@
 /* eslint-disable default-case */
 
 const initialState = {
-  products: [],
-  total: 0,
+  products: <any>[],
+  total: <number>0,
 };
 
 export default (state = initialState, action) => {

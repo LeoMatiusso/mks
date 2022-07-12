@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Routes from './routes';
 import { store } from './store';
 
-function App() {
+const App: FC = (): ReactElement => {
   return (
     <Provider store={store}>
       <BrowserRouter>
