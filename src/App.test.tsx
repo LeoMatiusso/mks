@@ -1,8 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { store } from './store'
-import * as redux from 'react-redux'
-
 import App from './App';
 
 

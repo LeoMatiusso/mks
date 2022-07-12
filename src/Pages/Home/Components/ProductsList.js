@@ -36,6 +36,10 @@ export default function ProductsList(props) {
           pt: 5,
           pb: 8,
         },
+        [theme.breakpoints.down('lg')]: {
+          pt: 3,
+          pb: 8,
+        }
       }}
     >
       <Container maxWidth="lg">
